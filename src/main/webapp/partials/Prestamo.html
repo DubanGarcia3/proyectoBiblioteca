@@ -1,0 +1,164 @@
+
+
+<div class="panel panel-primary" ng-hide="panelEditar">
+    <div class="panel-heading">Parametrización de Prestamo</div>
+    <div class="panel-body">
+        <div class="btn-group">
+            <button type="button" class="btn btn-default" ng-click="nuevoPrestamo()">Nuevo</button>
+        </div>
+        <table class="resultados table table-striped">
+            <tr>
+                <th>id</th>
+                <th>Nombre del cliente</th>
+                <th>Libro</th>
+                <th>Estado</th>
+                <th>Fecha de prestamo</th>
+                <th>Multa</th>
+                <th>Observación</th>
+                <th>Dias</th>
+                <th>
+                    <input class="form-control" ng-model="busquedaPrestamo"  placeholder="Buscar"/>
+                </th>
+            </tr>
+            <!--<tr ng-repeat="prestamo in PrestamoCtrl.listaPrestamo">
+            <!--<th scope="resultados">{{$index}}</th>  
+            <td>{{prestamo.libro}}</td>
+            <td>{{prestamo.nombre}}</td>
+            <td>{{prestamo.fecha}}</td>
+            <td>{{prestamo.estadoPrestamo}}</td>
+            <td>{{prestamo.multa}}</td>
+            <td>{{prestamo.observacion}}</td>
+</tr> --> <tbody>
+                    <tr ng-repeat="prestamo in listaPrestamo">
+                        <th scope="row">{{$index}}</th>
+                       <td>{{prestamo.date}}</td>
+                <td>{{prestamo.Observation}}</td>
+                <td>{{prestamo.state}}</td>
+                <td>{{prestamo.days}}</td>
+                <td>{{prestamo.multa}}</td>
+                <td>{{prestamo.autor.name}}</td>
+                <td>{{prestamo.cliente.name}}</td>
+             
+                        
+                    </tr>
+                </tbody>
+<!--            <tr dir-paginate="prestamo in lista|filter: busquedaPrestamo|itemsPerPage:10">
+                <td>{{prestamo.nombre}}</td>
+                <td>{{prestamo.libro}}</td>
+                <td>{{prestamo.fecha}}</td>
+                <td>{{prestamo.estadoPrestamo}}</td>
+                <td>{{prestamo.multa}}</td>
+                <td>{{prestamo.observacion}}</td>
+                <td>{{prestamo.dias}}</td>
+                <td class="row">
+                    <button type="button" class="btn btn-default" ng-click="editar(prestamo)">
+                        <span class="glyphicon glyphicon-pencil"></span>Editar
+                    </button>
+                    <button type="button" class="btn btn-default" ng-click="eliminar(prestamo)">
+                        <span class="glyphicon glyphicon-remove"></span>Eliminar
+                    </button>
+                </td>
+            </tr>-->
+            <!--este es el de buscar
+            -->
+            <!-- <tr dir-paginate="row in lista|filter: busquedaPrestamo|itemsPerPage:10">
+                 <td>{{row.nombre}}</td>
+                 
+                 <td>{{row.libro}}</td>
+                 
+                 <td>{{row.fecha}}</td>
+                 
+                 <td>{{row.estadoPrestamo}}</td>
+                 
+                 <td>{{row.multa}}</td>
+                 
+                 <td>{{row.observacion}}</td>
+ 
+                 <td class="row">
+                     <button type="button" class="btn btn-default" ng-click="editar(row)">
+                         <span class="glyphicon glyphicon-pencil"></span>Editar
+                     </button>
+                     <button type="button" class="btn btn-default" ng-click="eliminar(row)">
+                         <span class="glyphicon glyphicon-remove"></span>Eliminar
+                     </button>
+                 </td>
+             </tr>-->
+        </table>
+        <div dir-pagination-controls></div>
+        <br/>
+    </div>
+</div>
+
+<div class="panel panel-primary" ng-show="panelEditar">
+    <div class="panel-heading">Parametrización de Préstamo</div>
+    <div class="panel-body">
+
+        <div class="form-group col-md-6" ng-class="errores.nombre?'error':''">
+            <label for="nombre">Nombre del cliente</label>
+            <input id="nombre" 
+                   class="form-control" 
+                   type="text"
+                   ng-model="datosFormulario.nombre"
+                   placeholder="nombre"/>
+            <div ng-show="errores.nombre">{{errores.nombre}}</div>
+        </div>				
+        <div class="form-group col-md-6" ng-class="errores.direccion?'error':''">
+            <label for="direccion">Libro</label>
+            <input id="direccion" 
+                   class="form-control" 
+                   type="text"
+                   ng-model="datosFormulario.libro"
+                   placeholder="libro"/>
+            <div ng-show="errores.direccion">{{errores.direccion}}</div>
+        </div>				
+        <div class="form-group col-md-6" ng-class="errores.telefono?'error':''">
+            <label>Estado</label>
+            <select id="ciudad" class="form-control" 
+                    ng-model="datosFormulario.estadoPrestamo"
+                    ng-options="option.estado for option in listaEstadoPrestamo track by option.id">
+            </select>
+            <div ng-show="errores.ciudad">{{errores.ciudad}}</div>
+        </div> 
+        <div class="row">
+            <div class="form-group col-md-6" ng-class="errores.ciudad?'error':''">
+                <label>ciudad</label>
+                <select id="ciudad" class="form-control" 
+                        ng-model="datosFormulario.ciudad"
+                        ng-options="option.nombre for option in listaCiudad track by option.id">
+                </select>
+                <div ng-show="errores.ciudad">{{errores.ciudad}}</div>
+            </div>
+        </div>
+        <div class="form-group col-md-6" ng-class="errores.nombre?'error':''">
+            <label for="nombre">Nombre del cliente</label>
+            <input id="nombre" 
+                   class="form-control" 
+                   type="text"
+                   ng-model="datosFormulario.nombre"
+                   placeholder="nombre"/>
+            <div ng-show="errores.nombre">{{errores.nombre}}</div>
+        </div>	
+        <div class="form-group col-md-6" ng-class="errores.nombre?'error':''">
+            <label for="nombre">Nombre del cliente</label>
+            <input id="nombre" 
+                   class="form-control" 
+                   type="text"
+                   ng-model="datosFormulario.nombre"
+                   placeholder="nombre"/>
+            <div ng-show="errores.nombre">{{errores.nombre}}</div>
+        </div>	
+        <div class="form-group col-md-6" ng-class="errores.nombre?'error':''">
+            <label for="nombre">Nombre del cliente</label>
+            <input id="nombre" 
+                   class="form-control" 
+                   type="text"
+                   ng-model="datosFormulario.nombre"
+                   placeholder="nombre"/>
+            <div ng-show="errores.nombre">{{errores.nombre}}</div>
+        </div>	
+        <div class="btn-group">
+            <button type="button" class="btn btn-default" ng-click="guardar()">Aceptar</button>
+            <button type="button" class="btn btn-default" ng-click="cancelar()">Cancelar</button>
+        </div>    
+    </div>
+</div>

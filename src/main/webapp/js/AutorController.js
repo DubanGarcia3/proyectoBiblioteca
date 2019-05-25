@@ -8,7 +8,7 @@ var consecutivoPrestamo=2;
 
 module.controller('AutorCtrl', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
     //listar
-    $scope.lista = listaAutor;
+    $scope.lista = null;
     $scope.listaCliente= listaAutor;
     $scope.listaLibro = listaAutor;
     $scope.datosFormulario = {};

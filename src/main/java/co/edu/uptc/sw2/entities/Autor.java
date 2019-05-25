@@ -6,6 +6,7 @@
 package co.edu.uptc.sw2.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  *
@@ -14,6 +15,7 @@ import javax.persistence.Entity;
 @Entity
 public class Autor {
     
+    @Id
     private String name;
     private String nationality;
 
